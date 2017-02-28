@@ -27,14 +27,24 @@ var Cat = function() {
         {nickname: 'mr. mcgillicuddy'},
         {nickname: 'joe'}
     ]);
+    
+    this.getClickCount = function() {
+        return this.clickCount;
+    };
+    
+    this.setClickCount = function(count) {
+        this.clickCount(count);
+    };
 };
 
 var ViewModel = function () {
+    var that = this;
+    
     this.currentCat = ko.observable(new Cat());
     
     this.incrementCounter = function () {
-        this.currentCat().clickCount(this.currentCat().clickCount() + 1);
-    }
+        that.currentCat().clickCount(that.currentCat().clickCount() + 1);
+    };
 };
 
 ko.applyBindings(new ViewModel());
